@@ -1,4 +1,9 @@
 // todo vísa í rétta hluti með import
+import { empty, el } from './helpers';
+import question from './question';
+import { score } from './highscore';
+import { load, save } from './storage';
+import Highscore from './highscore';
 
 // allar breytur hér eru aðeins sýnilegar innan þessa módúl
 
@@ -17,8 +22,10 @@ const highscore = new Highscore();
  * Klárar leik. Birtir result og felur problem. Reiknar stig og birtir í result.
  */
 function finish() {
-  const text = `Þú svaraðir ${correct} rétt af ${total} spurningum og fékkst ${points} stig fyrir. Skráðu þig á stigatöfluna!`;
+  
   const points = score(total, correct, playTime);
+  const text = `Þú svaraðir ${correct} rétt af ${total} spurningum og fékkst ${points} stig fyrir. Skráðu þig á stigatöfluna!`;
+  
   result.querySelector('.result__text').appendChild(document.createTextNode(text));
 
   problem.classList.add('problem--hidden');

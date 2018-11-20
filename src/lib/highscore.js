@@ -1,5 +1,6 @@
 // todo vísa í rétta hluti með import
-
+import { clear as storageClear, load as storageLoad } from './storage';
+import { empty, el } from './helpers';
 /**
  * Reikna út stig fyrir svör út frá heildarfjölda svarað á tíma.
  * Ekki þarf að gera ráð fyrir hversu lengi seinasta spurning var sýnd. Þ.e.a.s.
@@ -52,12 +53,12 @@ export default class Highscore {
   highscore(data) {
     // todo útfæra
 
-    const data = _data;
+    const datainfo = _datainfo;
     empty(this.scores);
     const listi = el('ol');
 
-    for (let i = 0; i < data.length; i += 1) {
-      const s = data[i];
+    for (let i = 0; i < datainfo.length; i += 1) {
+      const s = datainfo[i];
       const name = el('span', s.name);
       name.classList.add('highscore__name');
       const points = el('span', `${s.points} stig  `);
